@@ -1,0 +1,4 @@
+-Plexiglas, möglichst durchsichtig, 3mm?
+	- 2x 180 mm x 270 mm => 40 cm x 30cm
+- Holz in gleicher Dicke
+	- 2x 185 mmx190 mm => 40 cm x 20 cm
