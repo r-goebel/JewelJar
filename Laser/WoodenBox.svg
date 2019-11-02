@@ -39,9 +39,9 @@
      inkscape:window-height="1025"
      id="namedview49"
      showgrid="false"
-     inkscape:zoom="1.085942"
-     inkscape:cx="195.62258"
-     inkscape:cy="434.64567"
+     inkscape:zoom="0.76787695"
+     inkscape:cx="40.676443"
+     inkscape:cy="383.28072"
      inkscape:window-x="67"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -169,8 +169,9 @@ SettingsUrl: http://localhost:8008/ClosedBox?FingerJoint_angle=90.0&FingerJoint_
      id="rect863"
      width="12.889071"
      height="18.86817"
-     x="150.81894"
-     y="110.08884" />
+     x="113.07838"
+     y="-166.69756"
+     transform="rotate(90)" />
   <ellipse
      style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.06614583;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
      id="path867"
