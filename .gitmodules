@@ -1,0 +1,3 @@
+[submodule "JuwelJar/Effects"]
+	path = JuwelJar/Effects
+	url = git@github.com:r-goebel/Effects.git
