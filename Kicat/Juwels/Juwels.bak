@@ -93,7 +93,7 @@ Wire Wire Line
 Connection ~ 2700 3000
 Connection ~ 2500 3300
 Wire Wire Line
-	3350 2150 2100 2150
+	3350 2150 3150 2150
 $Comp
 L Device:R_POT RV?
 U 1 1 5DB24BA8
@@ -171,7 +171,7 @@ Wire Wire Line
 Text GLabel 1000 3000 0    50   Input ~ 0
 +5V
 Wire Wire Line
-	2500 3300 4750 3300
+	2500 3300 3150 3300
 Wire Wire Line
 	3750 2150 3750 3000
 Connection ~ 3750 3000
@@ -219,4 +219,25 @@ Wire Wire Line
 Connection ~ 5150 3300
 Wire Wire Line
 	5150 3300 6200 3300
+$Comp
+L Device:R R?
+U 1 1 5DB44287
+P 3150 2500
+F 0 "R?" V 2943 2500 50  0000 C CNN
+F 1 "10k" V 3034 2500 50  0000 C CNN
+F 2 "" V 3080 2500 50  0001 C CNN
+F 3 "~" H 3150 2500 50  0001 C CNN
+	1    3150 2500
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3150 2150 3150 2350
+Connection ~ 3150 2150
+Wire Wire Line
+	3150 2150 2100 2150
+Wire Wire Line
+	3150 2650 3150 3300
+Connection ~ 3150 3300
+Wire Wire Line
+	3150 3300 4750 3300
 $EndSCHEMATC

@@ -15,17 +15,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Device:D D1
-U 1 1 5DB1B8AB
-P 2700 2700
-F 0 "D1" V 2654 2779 50  0000 L CNN
-F 1 "?" V 2745 2779 50  0000 L CNN
-F 2 "" H 2700 2700 50  0001 C CNN
-F 3 "~" H 2700 2700 50  0001 C CNN
-	1    2700 2700
-	0    1    1    0   
-$EndComp
-$Comp
 L RF_Module:ESP-12F ESP8266
 U 1 1 5DB1BBC0
 P 1500 1850
@@ -36,29 +25,6 @@ F 3 "http://wiki.ai-thinker.com/_media/esp8266/esp8266_series_modules_user_manua
 	1    1500 1850
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:C C1
-U 1 1 5DB1BDB1
-P 1900 3150
-F 0 "C1" H 2015 3196 50  0000 L CNN
-F 1 "1000muF" H 2015 3105 50  0000 L CNN
-F 2 "" H 1938 3000 50  0001 C CNN
-F 3 "~" H 1900 3150 50  0001 C CNN
-	1    1900 3150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1500 2550 2500 2550
-Wire Wire Line
-	2500 2550 2500 2800
-Wire Wire Line
-	1500 1050 2700 1050
-Wire Wire Line
-	2700 1050 2700 2550
-Wire Wire Line
-	2700 2850 2700 3000
-Wire Wire Line
-	2100 1650 2950 1650
 Text GLabel 6700 1450 2    50   Input ~ 0
 VCC_Juwels
 Text GLabel 6700 1650 2    50   Input ~ 0
@@ -66,178 +32,56 @@ DIn_Juwels
 Text GLabel 6700 1850 2    50   Input ~ 0
 GND_Juwels
 Wire Wire Line
-	6700 1650 3250 1650
-Wire Wire Line
-	6200 3300 6200 1850
+	6200 2550 6200 1850
 Wire Wire Line
 	6200 1850 6700 1850
-Wire Wire Line
-	5900 3000 5900 1450
-Wire Wire Line
-	5900 1450 6700 1450
 $Comp
 L Switch:SW_Push SWPRG
 U 1 1 5DB20BA9
-P 3550 2150
-F 0 "SWPRG" H 3550 2435 50  0000 C CNN
-F 1 "Program_select" H 3550 2344 50  0000 C CNN
-F 2 "" H 3550 2350 50  0001 C CNN
-F 3 "" H 3550 2350 50  0001 C CNN
-	1    3550 2150
+P 3300 2150
+F 0 "SWPRG" H 3300 2435 50  0000 C CNN
+F 1 "Program_select" H 3300 2344 50  0000 C CNN
+F 2 "" H 3300 2350 50  0001 C CNN
+F 3 "" H 3300 2350 50  0001 C CNN
+	1    3300 2150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2700 3000 3750 3000
-Wire Wire Line
-	1000 3000 1900 3000
-Connection ~ 2700 3000
-Connection ~ 2500 3300
-Wire Wire Line
-	3350 2150 3150 2150
-$Comp
-L Device:R_POT RV?
-U 1 1 5DB24BA8
-P 4600 1250
-F 0 "RV?" V 4486 1250 50  0000 C CNN
-F 1 "R_POT" V 4395 1250 50  0000 C CNN
-F 2 "" H 4600 1250 50  0001 C CNN
-F 3 "~" H 4600 1250 50  0001 C CNN
-	1    4600 1250
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5DB24E33
-P 4150 1250
-F 0 "R?" V 3943 1250 50  0000 C CNN
-F 1 ">=5.1k" V 4034 1250 50  0000 C CNN
-F 2 "" V 4080 1250 50  0001 C CNN
-F 3 "~" H 4150 1250 50  0001 C CNN
-	1    4150 1250
-	0    1    1    0   
-$EndComp
-Connection ~ 4000 3000
-Wire Wire Line
-	4000 3000 5900 3000
-Wire Wire Line
-	700  1650 900  1650
-Wire Wire Line
-	700  700  700  1650
-Wire Wire Line
-	4600 1100 4600 700 
-Wire Wire Line
-	4600 700  700  700 
-Wire Wire Line
-	4000 1250 4000 3000
-Wire Wire Line
-	4300 1250 4450 1250
-Wire Wire Line
-	4750 1250 4750 3300
-Connection ~ 4750 3300
-Wire Wire Line
-	4750 3300 5150 3300
-Text GLabel 1250 3300 0    50   Input ~ 0
-Schalter_GND
-Wire Wire Line
-	1250 3300 1900 3300
-$Comp
-L Switch:SW_Push SWRST
-U 1 1 5DB2BD2A
-P 1250 2800
-F 0 "SWRST" H 1250 3085 50  0000 C CNN
-F 1 "RST_extern" H 1250 2994 50  0000 C CNN
-F 2 "" H 1250 3000 50  0001 C CNN
-F 3 "" H 1250 3000 50  0001 C CNN
-	1    1250 2800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	900  1250 600  1250
-Wire Wire Line
-	600  1250 600  2800
-Wire Wire Line
-	600  2800 1050 2800
-Wire Wire Line
-	1450 2800 2500 2800
-Connection ~ 2500 2800
-Wire Wire Line
-	2500 2800 2500 3300
-Connection ~ 1900 3000
-Connection ~ 1900 3300
-Wire Wire Line
-	1900 3000 2700 3000
-Wire Wire Line
-	1900 3300 2500 3300
-Text GLabel 1000 3000 0    50   Input ~ 0
-+5V
-Wire Wire Line
-	2500 3300 3150 3300
-Wire Wire Line
-	3750 2150 3750 3000
-Connection ~ 3750 3000
-Wire Wire Line
-	3750 3000 4000 3000
-$Comp
-L Device:LED D?
-U 1 1 5DB43CF9
-P 5000 1850
-F 0 "D?" H 4992 1595 50  0000 C CNN
-F 1 "LED" H 4992 1686 50  0000 C CNN
-F 2 "" H 5000 1850 50  0001 C CNN
-F 3 "~" H 5000 1850 50  0001 C CNN
-	1    5000 1850
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R1
-U 1 1 5DB1B69D
-P 3100 1650
-F 0 "R1" V 2893 1650 50  0000 C CNN
-F 1 "470" V 2984 1650 50  0000 C CNN
-F 2 "" V 3030 1650 50  0001 C CNN
-F 3 "~" H 3100 1650 50  0001 C CNN
-	1    3100 1650
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5DB459B6
-P 4400 1850
-F 0 "R?" V 4193 1850 50  0000 C CNN
-F 1 "330" V 4284 1850 50  0000 C CNN
-F 2 "" V 4330 1850 50  0001 C CNN
-F 3 "~" H 4400 1850 50  0001 C CNN
-	1    4400 1850
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	2100 1850 4250 1850
-Wire Wire Line
-	4550 1850 4850 1850
-Wire Wire Line
-	5150 1850 5150 3300
-Connection ~ 5150 3300
-Wire Wire Line
-	5150 3300 6200 3300
+	3750 2150 3750 1450
 $Comp
 L Device:R R?
 U 1 1 5DB44287
-P 3150 2500
-F 0 "R?" V 2943 2500 50  0000 C CNN
-F 1 "10k" V 3034 2500 50  0000 C CNN
-F 2 "" V 3080 2500 50  0001 C CNN
-F 3 "~" H 3150 2500 50  0001 C CNN
-	1    3150 2500
+P 2600 2350
+F 0 "R?" V 2393 2350 50  0000 C CNN
+F 1 "10k" V 2484 2350 50  0000 C CNN
+F 2 "" V 2530 2350 50  0001 C CNN
+F 3 "~" H 2600 2350 50  0001 C CNN
+	1    2600 2350
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	3150 2150 3150 2350
-Connection ~ 3150 2150
+	2100 1650 6700 1650
 Wire Wire Line
-	3150 2150 2100 2150
+	1500 1050 3750 1050
 Wire Wire Line
-	3150 2650 3150 3300
-Connection ~ 3150 3300
+	3500 2150 3750 2150
+Connection ~ 3750 1450
 Wire Wire Line
-	3150 3300 4750 3300
+	3750 1450 3750 1050
+Wire Wire Line
+	3750 1450 6700 1450
+Wire Wire Line
+	2100 2150 2600 2150
+Wire Wire Line
+	1500 2550 2600 2550
+Wire Wire Line
+	2600 2500 2600 2550
+Connection ~ 2600 2550
+Wire Wire Line
+	2600 2550 6200 2550
+Wire Wire Line
+	2600 2200 2600 2150
+Connection ~ 2600 2150
+Wire Wire Line
+	2600 2150 3100 2150
 $EndSCHEMATC
