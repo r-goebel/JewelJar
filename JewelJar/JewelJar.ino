@@ -15,7 +15,7 @@ void setup() {
   Serial.begin(115200);
 
   jewel.begin();
-  jewel.setBrightness(10);
+  jewel.setBrightness(200);
   jewel.rainbowCycle(10);
 
   jewel.show();
