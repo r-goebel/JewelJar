@@ -1,7 +1,7 @@
 //Board: Wemos D1 R2 & mini
 //Upload speed:115200
 
-#include "Effects.h"
+#include <Effects.h>
 #ifdef __AVR__
 #include <avr/power.h>
 #endif
