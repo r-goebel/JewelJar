@@ -12,8 +12,8 @@ int NUMPIXELS = 7;
 Effects jewel = Effects(NUMPIXELS, PixelPin, NEO_GRB + NEO_KHZ800);
 
 //Definition of possible effects
-char* effectList[] = {"fade red", "fade cyan", "fade green", "rainbow cycle"};
-int NumberEffects = 4;
+char* effectList[] = {"fade red", "fade cyan", "fade green", "rainbow cycle", "heart beat"};
+int NumberEffects = 5;
 int SelectedNew = random(0,NumberEffects);    //initial definition of new selected effect
 int Selected;
 bool EffectChange = 1;                        //variable indication change in effect (0=no change, 1=change), initially one change necessary 
@@ -76,5 +76,8 @@ void SelectEffect (){
     
   } else if (Selected == 3){ //RainbowCycleAll
     jewel.rainbowCycleAll(50);
-  }    
+    
+  } else if (Selected == 4){ //HeartBeat
+    jewel.heartBeat(jewel.Color(255,0,0));
+  }     
 }
