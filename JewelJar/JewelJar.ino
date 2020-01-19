@@ -26,6 +26,8 @@ String effect;
 int intervalSwitch = 500; //interval in which no new Switch is allowed
 int lastSwitch;
 
+long MaxBrightness = 150;
+
 #define PIN D4
 
 void setup() {
@@ -39,10 +41,11 @@ void setup() {
   jewelNode.advertise("onoff").settable(lightOnHandler);
   jewelNode.advertise("effect").settable(effectHandler);
   jewelNode.advertise("color").settable(colorHandler);
+  jewelNode.advertise("brightness").settable(brightnessHandler);
   Homie.setup();
   
   jewel.begin();
-  jewel.setBrightness(50); //150 geht auch
+  jewel.setBrightness(150);
 
   jewel.show();
 
@@ -110,6 +113,20 @@ bool colorHandler (const HomieRange& range, const String& value) {
     jewelNode.setProperty("color").send(value);
 }
 
+bool brightnessHandler (const HomieRange& range, const String& value) {
+  long brightness = value.toInt();
+  Serial.println(brightness);
+  setBrightness(brightness);
+  jewelNode.setProperty("brightness").send(value);
+}
+
+void setBrightness(long brightness){
+  if (brightness >= 0 && brightness <= MaxBrightness){
+    jewel.setBrightness(brightness);
+    jewel.show();
+  }
+}
+
 void SelectEffect (String effect){
   if (effect == "fade"){ //fade red
     jewel.FadeInOut(color,10); 
@@ -124,5 +141,11 @@ void SelectEffect (String effect){
     jewel.NoEffect();
     jewel.fill(color);
     jewel.show();
-  }    
+    
+  } else if (effect == "alarm"){
+    jewel.alarm(jewel.Color(250,0,0));
+    setBrightness(MaxBrightness);
+    jewelNode.setProperty("brightness").send(String(MaxBrightness));
+    //sent Brightness to NodeRed!!!
+  }
 }
