@@ -11,6 +11,9 @@ int NUMPIXELS = 7;
 
 Effects jewel = Effects(NUMPIXELS, PixelPin, NEO_GRB + NEO_KHZ800);
 
+#include <Homie.h>
+HomieNode jewelNode("jeweljar", "jeweljar", "light");
+
 //Definition of possible effects
 char* effectList[] = {"fade red", "fade cyan", "fade green", "rainbow cycle", "heart beat"};
 int NumberEffects = 5;
@@ -24,42 +27,54 @@ bool EffectChange = 1;                        //variable indication change in ef
 int intervalSwitch = 500; //interval in which no new Switch is allowed
 int lastSwitch;
 
+#define PIN D4
+
 void setup() {
   Serial.begin(115200);
+  Serial << endl << endl;
 
+    pinMode(PIN, OUTPUT);
+  digitalWrite(PIN, LOW);
+
+  Homie_setFirmware("jeweljar", "1.0.0");
+  jewelNode.advertise("onoff").settable(lightOnHandler);
+  //jewelNode.advertise("effect").settable(effectHandler);
+  //jewelNode.advertiseRange("color",0,1).settable(colorHandler);
+  Homie.setup();
+  
   jewel.begin();
-  jewel.setBrightness(150);
+  jewel.setBrightness(50); //150 geht auch
 
   jewel.show();
 }
 
 void loop() {
-
+  Homie.loop();
   //if switch state is HIGH, Change Effect
-  if (millis()-lastSwitch > intervalSwitch){
-    if (digitalRead(PinSwitch) == HIGH){
-      EffectChange = 1;
-      if (Selected < NumberEffects-1){
-        SelectedNew = Selected+1;
-      } else {
-        SelectedNew = 0;
-      }
-      lastSwitch = millis();
-    }
-  }
+  //if (millis()-lastSwitch > intervalSwitch){
+    //if (digitalRead(PinSwitch) == HIGH){
+      //EffectChange = 1;
+      //if (Selected < NumberEffects-1){
+        //SelectedNew = Selected+1;
+      //} else {
+        //SelectedNew = 0;
+      //}
+      //lastSwitch = millis();
+    //}
+  //}
 
-  if (EffectChange == 1){
-    Serial.println("EffectChange noticed");
-    Selected = SelectedNew;
-    EffectChange = 0;
-    jewel.clear();
+  //if (EffectChange == 1){
+    //Serial.println("EffectChange noticed");
+    //Selected = SelectedNew;
+    //EffectChange = 0;
+    //jewel.clear();
     //Initialization
-    SelectEffect();
-  }
+    //SelectEffect();
+  //}
   //no Change: just update effect
-  else{
-    jewel.Update();
-  }
+  //else{
+    //jewel.Update();
+  //}
   
 }
 
@@ -80,4 +95,15 @@ void SelectEffect (){
   } else if (Selected == 4){ //HeartBeat
     jewel.heartBeat(jewel.Color(255,0,0));
   }     
+}
+
+bool lightOnHandler(const HomieRange& range, const String& value) {
+  Serial.println("Kontroll");
+  if (value == "on"){
+    digitalWrite(PIN, LOW);
+    jewelNode.setProperty("onoff").send(value);
+  } else {
+    digitalWrite(PIN, HIGH);
+    jewelNode.setProperty("onoff").send(value);
+  }
 }
