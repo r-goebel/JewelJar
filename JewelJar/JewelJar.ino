@@ -28,17 +28,12 @@ int lastSwitch;
 
 long MaxBrightness = 150;
 
-#define PIN D4
 
 void setup() {
   Serial.begin(115200);
   Serial << endl << endl;
 
-    pinMode(PIN, OUTPUT);
-  digitalWrite(PIN, LOW);
-
   Homie_setFirmware("jeweljar", "1.0.0");
-  jewelNode.advertise("onoff").settable(lightOnHandler);
   jewelNode.advertise("effect").settable(effectHandler);
   jewelNode.advertise("color").settable(colorHandler);
   jewelNode.advertise("brightness").settable(brightnessHandler);
@@ -57,17 +52,15 @@ void loop() {
   Homie.loop();
   jewel.Update();
   //if switch state is HIGH, Change Effect
-  //if (millis()-lastSwitch > intervalSwitch){
-    //if (digitalRead(PinSwitch) == HIGH){
-      //EffectChange = 1;
-      //if (Selected < NumberEffects-1){
-        //SelectedNew = Selected+1;
-      //} else {
-        //SelectedNew = 0;
-      //}
-      //lastSwitch = millis();
-    //}
-  //}
+  if (millis()-lastSwitch > intervalSwitch){
+    if (digitalRead(PinSwitch) == HIGH){
+      EffectChange = 1;
+      effect = effectList[random(0,3)];
+      color = jewel.Color(random(0,255),random(0,255),random(0,255));
+      lastSwitch = millis();
+      jewelNode.setProperty("effect").send(effect);
+    }
+  }
   
   //Change Effect or Color
   if (EffectChange == 1){
@@ -86,16 +79,6 @@ bool effectHandler(const HomieRange& range, const String& value){
   effect = value;
   EffectChange = 1;  
   jewelNode.setProperty("effect").send(value);     
-}
-
-bool lightOnHandler(const HomieRange& range, const String& value) {
-  if (value == "on"){
-    digitalWrite(PIN, LOW);
-    jewelNode.setProperty("onoff").send(value);
-  } else {
-    digitalWrite(PIN, HIGH);
-    jewelNode.setProperty("onoff").send(value);
-  }
 }
 
 bool colorHandler (const HomieRange& range, const String& value) {
