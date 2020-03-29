@@ -130,5 +130,29 @@ void SelectEffect (String effect){
     setBrightness(MaxBrightness);
     jewelNode.setProperty("brightness").send(String(MaxBrightness));
     //sent Brightness to NodeRed!!!
+    
+  } else if (effect == "call"){
+    jewel.NoEffect();
+    jewel.fill(jewel.Color(0,0,250));
+    setBrightness(MaxBrightness);
+    jewel.show();
+    jewelNode.setProperty("brightness").send(String(MaxBrightness));
+    //sent Brightness to NodeRed!!!
+
+  } else if (effect == "donotdisturb"){
+    jewel.NoEffect();
+    jewel.fill(jewel.Color(125,0,125));
+    setBrightness(MaxBrightness);
+    jewel.show();
+    jewelNode.setProperty("brightness").send(String(MaxBrightness));
+    //sent Brightness to NodeRed!!!
+    
+  } else if (effect == "comeIn"){
+    jewel.NoEffect();
+    jewel.fill(jewel.Color(0,250,0));
+    setBrightness(MaxBrightness);
+    jewel.show();
+    jewelNode.setProperty("brightness").send(String(MaxBrightness));
+    //sent Brightness to NodeRed!!!
   }
 }
