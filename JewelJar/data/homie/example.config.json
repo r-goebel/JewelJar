@@ -1,0 +1,18 @@
+{
+    "_comment":  "Nicht getestet und daher unklar, ob das so richtig ist",
+}
+
+{
+  "name": "JewelJar",
+  "wifi": {
+    "ssid": "Network_1",
+    "password": "I'm a Wi-Fi password!"
+  },
+  "mqtt": {
+    "host": "192.168.178.26",
+    "port": 1883
+  },
+  "ota": {
+    "enabled": false
+  }
+}
